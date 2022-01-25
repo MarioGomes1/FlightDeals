@@ -11,6 +11,7 @@ function InputBuilder(props) {
   });
 
   const inputValueHandler = (e) => {
+    console.log("hello");
     const { name, value } = e.target;
     setInputState((prev) => ({
       ...prev,
