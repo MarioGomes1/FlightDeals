@@ -1,0 +1,47 @@
+.container {
+  /* background: white; */
+  /* border: 1px solid red; */
+  position: relative;
+  height: 21%;
+  top: 20%;
+  margin-left: 100px;
+  margin-right: 10px;
+  width: 80vw;
+  height: 100vh;
+}
+
+.card {
+  display: flex;
+  border: 1px solid white;
+  background-color: #bdd4e7;
+  background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+
+  /* position: absolute; */
+  margin: 100px;
+  height: 25%;
+  width: 50vw;
+  left: 50px;
+  align-self: center;
+}
+
+.book {
+  width: 10%;
+  /* border: 1px solid yellow; */
+  position: absolute;
+  right: 31%;
+  height: 24.5%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  color: white;
+  background-color: #bdd4e7;
+  background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+
+  border-left: 1px solid whitesmoke;
+}
+.book span {
+  color: rgb(36, 33, 33);
+  align-items: center;
+  margin-left: 30px;
+  text-transform: uppercase;
+}

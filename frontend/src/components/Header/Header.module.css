@@ -1,0 +1,24 @@
+.header {
+  padding: 100px;
+  position: relative;
+  padding: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.header .logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+ion-icon {
+  color: white;
+}

@@ -1,0 +1,57 @@
+.img1 {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+}
+
+.destination .list {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  /* margin-top: 40px; */
+  width: inherit;
+  height: auto;
+  margin: 0px;
+}
+
+.destination {
+  text-align: center;
+  position: relative;
+  /* height: 114px; */
+  /* bottom: -9px; */
+  margin-top: 22px;
+  text-align: center;
+  /* margin-top: 14em; */
+  /* position: absolute; */
+  display: flex;
+  justify-content: center;
+  width: 99%;
+}
+
+.box {
+  border: 2px solid black;
+  position: relative;
+  /* top: 10em; */
+  min-width: 350px;
+  height: 77vh;
+  /* background: #c83939; */
+  transition: 0.5s;
+  /* width: 100%; */
+}
+/* margin: 10px;
+}
+
+/* .box{
+    position: relative;
+    width: 100%;
+    bottom: 5px;
+    min-width: auto;
+    height: 100%;
+    background: #191919;
+    transition: 0.5s;} */

@@ -1,0 +1,48 @@
+.btn {
+  background: orange;
+  width: 10em;
+  height: 3em;
+  border-radius: 5%;
+  color: ghostwhite;
+  position: absolute;
+  bottom: 35%;
+  right: 0;
+  border-radius: 100px;
+  /* animation-duration: 1s;
+  animation-name: buttonMove; */
+}
+
+.btn:hover,
+.btn:visited {
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(209, 202, 202, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(209, 202, 202, 0.2);
+}
+
+@keyframes buttonMove {
+  0% {
+    transform: translateY(-400px);
+    transform: translateX(100px);
+  }
+  10% {
+    transform: translateY(-400px);
+  }
+  15% {
+    transform: translateY(-400px);
+  }
+  100% {
+    /* transform: translateY(400px); */
+    transform: translateX(200px);
+  }
+  /* 100% {
+    transform: translateY(0);
+  } */
+}

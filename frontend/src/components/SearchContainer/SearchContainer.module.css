@@ -1,0 +1,16 @@
+.searchContainer {
+  position: relative;
+  bottom: 10%;
+  height: 10em;
+  margin: 0px 13em;
+  background: linear-gradient(#314036, #33140302);
+  width: 64%;
+}
+.Hello {
+  position: absolute;
+  top: 46%;
+}
+/* .searchContainer {
+  position: absolute;
+  top: 46%;
+} */
