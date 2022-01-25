@@ -6,6 +6,7 @@ import styles from "./SearchContainer.module.css";
 import Button from "../Button/Button";
 import LocationList from "../LocationList/LocationList";
 import InputBuilder from "../InputBuilder/InputBuilder";
+// import api from "../API";
 
 import { Link } from "react-router-dom";
 
@@ -171,20 +172,16 @@ function SearchContainer() {
           name="toDestination"
         />
         <InputBuilder
-          type="text "
+          type="date"
           placeholder="Country, City or Airport"
           name="startDate"
         />
         <InputBuilder
-          type="text"
+          type="date"
           placeholder="Country, City or Airport"
           name="endDate"
         />
-        <InputBuilder
-          type="text"
-          placeholder="Country, City or Airport"
-          name="endDate"
-        />
+
         <Link
           to={`/test/${airportFromCode}/${airportToCode}/${startDate}/${endDate}`}
         >

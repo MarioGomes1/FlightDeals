@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import styles from "./InputBuilder.module.css";
+
 function InputBuilder(props) {
+  const [inputState, setInputState] = useState({
+    fromDestination: "",
+    toDestination: "",
+    startDate: "",
+    endDate: "",
+  });
+
   const inputValueHandler = (e) => {
-    // props.inputHandler()
-    console.log(e.target.value);
+    const { name, value } = e.target;
+    setInputState((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
+
+  useEffect(() => {
+    console.log(inputState);
+  }, [inputState]);
 
   return (
     <div className={styles.container}>
