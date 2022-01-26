@@ -17,22 +17,30 @@ function InputBuilder(props) {
       ...prev,
       [name]: value,
     }));
+    // props.onClick(inputState);
+
+    console.log(inputState);
   };
 
+  const test = () => {};
   useEffect(() => {
     console.log(inputState);
   }, [inputState]);
 
   return (
-    <div className={styles.container}>
-      <input
-        onChange={inputValueHandler}
-        type={props.type}
-        placeholder={props.placeholder}
-        name={props.name}
-        value={props.value}
-      />
-    </div>
+    <>
+      <div className={styles.container}>
+        <input
+          onChange={inputValueHandler}
+          type={props.type}
+          placeholder={props.placeholder}
+          name={props.name}
+          value={inputState[props.name]}
+          // onChange={test}
+        />
+      </div>
+      {/* <button onClick={test}>click me</button> */}
+    </>
   );
 }
 

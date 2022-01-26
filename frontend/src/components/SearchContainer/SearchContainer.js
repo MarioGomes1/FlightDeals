@@ -99,12 +99,51 @@ function SearchContainer() {
     // setSuggestedFromLocations("");
     // setSuggestedToLocations("");
   };
+  let t = "";
+  const test = (state) => {
+    console.log(state);
+    t = state;
+    console.log("idk");
+  };
 
-  const inputHandler = () => {};
+  const inputBuildHandler = (...inputNames) => {
+    return (
+      <div className={styles.searchContainer}>
+        {
+          (t = inputNames.map((name) => {
+            return (
+              <InputBuilder
+                type={name.includes("Date") ? "date" : "text"}
+                placeholder={
+                  name.includes("Destination")
+                    ? "Country, City or Airport"
+                    : undefined
+                }
+                name={name}
+                key={name}
+                onClick={test}
+              />
+            );
+          }))
+        }
+        {console.log(t)}
+        <Button click={(t) => test(t)}>BOOK NOW</Button>
+      </div>
+    );
+  };
   //need to create a helper function to populate this data
+
+  //TODO 1/25/22. map over an array of these input and pass it to InputBuilder
   return (
     <React.Fragment>
-      <div className={styles.searchContainer}>
+      {inputBuildHandler(
+        "fromDestination",
+        "toDestination",
+        "startDate",
+        "endDate"
+      )}
+
+      {/* <div className={styles.searchContainer}>
         <div class="Hello">
           <span className={styles.hello}>
             {suggestedFromLocations.length && (
@@ -187,7 +226,7 @@ function SearchContainer() {
         >
           <Button>BOOK NOW</Button>
         </Link>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 }
