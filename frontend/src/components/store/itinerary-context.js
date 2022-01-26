@@ -8,3 +8,6 @@ const IteneraryContext = React.createContext({
 });
 
 export default IteneraryContext;
+//to use we must provide and consume
+
+//wrap everyone component that will need it

@@ -10,7 +10,7 @@ import InputBuilder from "../InputBuilder/InputBuilder";
 
 import { Link } from "react-router-dom";
 
-function SearchContainer() {
+function SearchContainer(props) {
   //refactor [{}]
   const [fromLocation, setFromLocation] = useState("");
   const [toLocation, setToLocation] = useState("");
@@ -49,43 +49,43 @@ function SearchContainer() {
     }
   };
 
-  useEffect(() => {
-    const timeOut = setTimeout(() => {
-      getLocation();
-    }, 500);
-    return () => {
-      console.log("clean");
-      clearTimeout(timeOut);
-    };
-  }, [fromLocation, toLocation]);
+  // useEffect(() => {
+  //   const timeOut = setTimeout(() => {
+  //     getLocation();
+  //   }, 500);
+  //   return () => {
+  //     console.log("clean");
+  //     clearTimeout(timeOut);
+  //   };
+  // }, [fromLocation, toLocation]);
 
-  async function getLocation() {
-    const apiKey = "1a3uomecE8h0iKQPFWck8DLgECSyWc3X"; //DELETE MEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-    //test date DELETE ME AND USE STATE
-    const searchTerm = tempLocation == "to" ? toLocation : fromLocation;
-    const config = {
-      headers: {
-        accept: "application/json",
-        apikey: "1a3uomecE8h0iKQPFWck8DLgECSyWc3X",
-      },
-    };
-    //BUGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG if there's no from, the request is still being processed....fix this
-    const LOCATION_API_ENDPOINT = `https://tequila-api.kiwi.com/locations/query?term=${searchTerm}&locale=en-US&location_types=airport&limit=10&active_only=true`;
-    // const SEARCH_API_ENDPOINT = `https://tequila-api.kiwi.com/v2/search?fly_from=${flyFrom}&fly_to=${flyTo}&dateFrom=${dateFrom}&dateTo=${dateTo}`;
+  // async function getLocation() {
+  //   const apiKey = "1a3uomecE8h0iKQPFWck8DLgECSyWc3X"; //DELETE MEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+  //   //test date DELETE ME AND USE STATE
+  //   const searchTerm = tempLocation == "to" ? toLocation : fromLocation;
+  //   const config = {
+  //     headers: {
+  //       accept: "application/json",
+  //       apikey: "1a3uomecE8h0iKQPFWck8DLgECSyWc3X",
+  //     },
+  //   };
+  //   //BUGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG if there's no from, the request is still being processed....fix this
+  //   const LOCATION_API_ENDPOINT = `https://tequila-api.kiwi.com/locations/query?term=${searchTerm}&locale=en-US&location_types=airport&limit=10&active_only=true`;
+  //   // const SEARCH_API_ENDPOINT = `https://tequila-api.kiwi.com/v2/search?fly_from=${flyFrom}&fly_to=${flyTo}&dateFrom=${dateFrom}&dateTo=${dateTo}`;
 
-    // //Make request to get user's requsted city/airport code
-    try {
-      const { data } = await axios.get(LOCATION_API_ENDPOINT, config);
-      // console.log(tempLocation);
-      if (tempLocation == "from") {
-        setSuggestedFromLocations(data.locations);
-      } else if (tempLocation == "to") {
-        setSuggestedToLocations(data.locations);
-      }
-    } catch {
-      console.log("erro");
-    }
-  }
+  //   // //Make request to get user's requsted city/airport code
+  //   try {
+  //     const { data } = await axios.get(LOCATION_API_ENDPOINT, config);
+  //     // console.log(tempLocation);
+  //     if (tempLocation == "from") {
+  //       setSuggestedFromLocations(data.locations);
+  //     } else if (tempLocation == "to") {
+  //       setSuggestedToLocations(data.locations);
+  //     }
+  //   } catch {
+  //     console.log("erro");
+  //   }
+  // }
 
   const setUsersChosenLocation = function (location, type) {
     console.log(location);
@@ -100,10 +100,14 @@ function SearchContainer() {
     // setSuggestedToLocations("");
   };
   let t = "";
-  const test = (state) => {
-    console.log(state);
-    t = state;
-    console.log("idk");
+  // const test = (state) => {
+  //   console.log(state);
+  //   t = state;
+  //   console.log("idk");
+  // };
+
+  const stateTransfer = (data) => {
+    props.onLocation(data);
   };
 
   const inputBuildHandler = (...inputNames) => {
@@ -121,19 +125,15 @@ function SearchContainer() {
                 }
                 name={name}
                 key={name}
-                onClick={test}
+                onLocation={stateTransfer}
               />
             );
           }))
         }
-        {console.log(t)}
-        <Button click={(t) => test(t)}>BOOK NOW</Button>
       </div>
     );
   };
-  //need to create a helper function to populate this data
 
-  //TODO 1/25/22. map over an array of these input and pass it to InputBuilder
   return (
     <React.Fragment>
       {inputBuildHandler(
@@ -142,91 +142,6 @@ function SearchContainer() {
         "startDate",
         "endDate"
       )}
-
-      {/* <div className={styles.searchContainer}>
-        <div class="Hello">
-          <span className={styles.hello}>
-            {suggestedFromLocations.length && (
-              <LocationList
-                style="locationList"
-                locations={suggestedFromLocations}
-                setLocationHandler={setUsersChosenLocation}
-                type="from"
-              />
-            )}
-            <input
-              type="text"
-              placeholder="Country, City or Airport"
-              className={styles.inputFrom}
-              name="from"
-              value={fromLocation}
-              onChange={locationHandler}
-            />
-          </span>
-
-          <span className={styles.hello}>
-            {suggestedToLocations.length && (
-              <LocationList
-                style="pp"
-                locations={suggestedToLocations}
-                setLocationHandler={setUsersChosenLocation}
-                type="to"
-              ></LocationList>
-            )}
-
-            <input
-              type="text"
-              placeholder="Country, City or Airport"
-              className={styles.inputTo}
-              name="to"
-              value={toLocation}
-              onChange={locationHandler}
-            />
-          </span>
-          <input
-            type="date"
-            placeholder="Country, City or Airport"
-            className={styles.inputTo}
-            name="startDate"
-            value={startDate}
-            onChange={locationHandler}
-          />
-          <input
-            type="date"
-            placeholder="Country, City or Airport"
-            className={styles.inputTo}
-            name="endDate"
-            value={endDate}
-            onChange={locationHandler}
-          />
-        </div>
-        <InputBuilder
-          type="text"
-          placeholder="Country, City or Airport"
-          name="fromDestination"
-        />
-        <InputBuilder
-          type="text"
-          placeholder="Country, City or Airport"
-          name="toDestination"
-        />
-        <InputBuilder
-          type="date"
-          placeholder="Country, City or Airport"
-          name="startDate"
-        />
-        <InputBuilder
-          type="date"
-          placeholder="Country, City or Airport"
-          name="endDate"
-        />
-
-        <Link
-          to={`/test/${airportFromCode}/${airportToCode}/${startDate}/${endDate}`}
-        >
-          <Button>BOOK NOW</Button>
-        </Link>
-      </div> */}
     </React.Fragment>
   );
 }
