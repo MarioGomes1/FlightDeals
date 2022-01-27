@@ -13,10 +13,15 @@ function InputBuilder(props) {
     startDate: "",
     endDate: "",
   });
-  const { setLocationList } = useContext(locations);
+  const { setLocationList, setSearchFlightObj } = useContext(locations);
   //sets the searchTerm state as the user's enter value which triggers the useEffect
+  //TODO explain what this is doing
   const onInputChange = (e) => {
     const { name, value } = e.target;
+    setSearchFlightObj((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
     setSearchTerm(value);
     setInputState({
       ...inputState,
@@ -46,19 +51,17 @@ function InputBuilder(props) {
     let config = {
       params: {
         term: searchTerm,
-        fly_from: "BOS",
-        fly_to: "ATL",
-        date_from: "02/04/2022",
-        date_to: "05/04/2022",
       },
     };
     try {
       const { data } = await instance.get("locations/query", config);
       // const SEARCH_API_ENDPOINT = `https://tequila-api.kiwi.com/v2/search?
-      setLocationList({ data, type: props.name });
 
-      // fly_from=${flyFrom}&fly_to=${flyTo}&dateFrom=${dateFrom}&dateTo=${dateTo}`
-    } catch {}
+      setLocationList({ data, type: props.name });
+      //TODO handle error i.e nothing comes back
+    } catch {
+      console.log("idk");
+    }
   }
 
   return (
@@ -78,8 +81,3 @@ function InputBuilder(props) {
 }
 
 export default InputBuilder;
-
-// const [fromDestination, setfromDestination] = useState("");
-//   const [toDestination, settoDestination] = useState("");
-//   const [startDate, setstartDate] = useState("");
-//   const [endDate, setendDate] = useState("");

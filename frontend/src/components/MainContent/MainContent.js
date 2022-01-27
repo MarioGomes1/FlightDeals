@@ -6,32 +6,28 @@ import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 
+//TODO refactor these variables fr fr
 import LocationList from "../LocationList/LocationList";
 import { locations } from "../../Context/locationListContext";
 
 //TODO in the LocationList.js create the search obj
 //TODO seriously find some better variable names
 function MainContent() {
-  const [fromDestination, setFromDestination] = useState("");
-  const [toDestination, setToDestination] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [searchObj, setSearchObj] = useState({
-    fromDestination: "",
-    toDestination: "",
-    startDate: "",
-    endDate: "",
-  });
+  const [searchFlightObj, setSearchFlightObj] = useState({});
   const [locationList, setLocationList] = useState("");
-  const onLocationListHandler = (d) => {
-    console.log(d);
-  };
+  const onLocationListHandler = (d) => {};
+  console.log(searchFlightObj);
 
-  console.log(locationList);
+  // console.log(locationList);
 
   return (
     <locations.Provider
-      value={{ locationList, setLocationList, setSearchObj, setSearchObj }}
+      value={{
+        locationList,
+        setLocationList,
+        searchFlightObj,
+        setSearchFlightObj,
+      }}
     >
       <section className={styles.banner}>
         <img src={main} alt="" className={styles.bg} />
@@ -41,7 +37,7 @@ function MainContent() {
       <SearchContainer onLocation={onLocationListHandler} />
       {locationList && <LocationList style="changeMeLater" />}
       <Link
-        to={`/test/${fromDestination}/${toDestination}/${startDate}/${endDate}`}
+        to={`/test/${searchFlightObj.fromDestination}/${searchFlightObj.toDestination}/${searchFlightObj.startDate}/${searchFlightObj.endDate}`}
       >
         <Button>Search</Button>
       </Link>

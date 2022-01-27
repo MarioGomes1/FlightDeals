@@ -8,15 +8,17 @@ import { locations } from "../../Context/locationListContext";
 import styles from "./LocationList.module.css";
 
 function LocationList(style) {
-  const { locationList } = useContext(locations);
-  // console.log(locationList);
+  const { locationList, setSearchFlightObj } = useContext(locations);
   let locationId = "";
   let airportName = "";
   let countryName = "";
 
-  const setLocationInputHandler = (e) => {
-    // setLocationHandler(locationName, type, locationId);
-    console.log(e.target.name);
+  const setLocationInputHandler = (locationID) => {
+    // console.log(locationList.type);
+    setSearchFlightObj((prev) => ({
+      ...prev,
+      [locationList.type]: locationID,
+    }));
   };
 
   return (
@@ -29,8 +31,7 @@ function LocationList(style) {
           return (
             <li
               key={location.id}
-              onClick={(e) => setLocationInputHandler(e)}
-              // name="hello"
+              onClick={() => setLocationInputHandler(location.id)}
             >
               {`${airportName}(${locationId})`}
               {countryName}
