@@ -2,13 +2,14 @@
 //once one is selected, it should pass it to the child component as well as a callback function to lift the state back to the parent (this component)
 //thinking about...if the childcomponent.len && render it...yup...or not...that's the plan
 
+//TODO I think this component should be making the api call
 import React, { useState, useContext } from "react";
 
-import { locations } from "../../Context/locationListContext";
+import { inputLocationCTX } from "../../Context/locationListContext";
 import styles from "./LocationList.module.css";
 
 function LocationList(style) {
-  const { locationList, setSearchFlightObj } = useContext(locations);
+  const { locationList, setSearchFlightObj } = useContext(inputLocationCTX);
   let locationId = "";
   let airportName = "";
   let countryName = "";
@@ -21,24 +22,23 @@ function LocationList(style) {
     }));
   };
 
+  const locationListHelper = locationList.data.locations.map((location) => {
+    locationId = location.id;
+    airportName = location.name;
+    countryName = location.city.country["name"];
+    return (
+      <li
+        key={location.id}
+        onClick={() => setLocationInputHandler(location.id)}
+      >
+        {`${airportName}(${locationId})`}
+        {countryName}
+      </li>
+    );
+  });
   return (
     <div>
-      <ul>
-        {locationList.data.locations.map((location) => {
-          locationId = location.id;
-          airportName = location.name;
-          countryName = location.city.country["name"];
-          return (
-            <li
-              key={location.id}
-              onClick={() => setLocationInputHandler(location.id)}
-            >
-              {`${airportName}(${locationId})`}
-              {countryName}
-            </li>
-          );
-        })}
-      </ul>
+      <ul>{locationListHelper}</ul>
     </div>
   );
 }
