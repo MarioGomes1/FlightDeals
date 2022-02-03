@@ -6,6 +6,7 @@ import styles from "./FlightList.module.css";
 
 import axios from "axios";
 
+//TODO haven't refactor yet
 function FlightList(props) {
   const [countryName, setCountryName] = useState("");
   const [cityCodeFrom, setCityCodeFrom] = useState();

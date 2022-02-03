@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styles from "./MainContent.module.css";
 import { Link } from "react-router-dom";
 
-import Card from "../Card/Card";
+// import Card from "../Card/Card";
 import SearchContainer from "../SearchContainer/SearchContainer";
-import Button from "../Button/Button";
+import Button from "../UI/Button/Button";
 import LocationList from "../LocationList/LocationList";
 import { inputLocationCTX } from "../../Context/locationListContext";
 import Hero from "../UI/Hero";
@@ -33,7 +33,7 @@ function MainContent() {
       >
         <Button>Search</Button>
       </Link>
-      <Card />
+      {/* <Card /> */}
     </inputLocationCTX.Provider>
   );
 }

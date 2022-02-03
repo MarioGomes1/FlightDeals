@@ -1,10 +1,11 @@
 import React from "react";
-import a from "../../images/Colorado.jpg";
-import b from "../../images/CaboVerde.jpg";
-import c from "../../images/France.jpg";
-import styles from "./Card.module.css";
+// import a from "../../images/Colorado.jpg";
+// import b from "../../images/CaboVerde.jpg";
+// import c from "../../images/France.jpg";
+// import styles from "./Card.module.css";
 
-//refactor to make it dynamic
+//TODO this should really only render a basic div with a starting class and accepts dynamic classes as props
+//TODO move this out
 function Card() {
   return (
     <>

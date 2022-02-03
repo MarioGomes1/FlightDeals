@@ -5,22 +5,23 @@ import { inputLocationCTX } from "../../Context/locationListContext";
 import styles from "./InputBuilder.module.css";
 import { instance } from "../API/api";
 
+//TODO basic input
+//API request should not be made here
 function InputBuilder(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const { setLocationList, setSearchFlightObj } = useContext(inputLocationCTX);
 
-  //Setting the
   const onInputChange = (e) => {
     const { name, value } = e.target;
     setSearchFlightObj((prev) => ({
       ...prev,
       [name]: value,
     }));
-    //sets the searchTerm state as the user's enter value which triggers the useEffect's API call. Might need to move to its own component though
+    //*sets the searchTerm state as the user's enter value which triggers the useEffect's API call. Might need to move to its own component though
     setSearchTerm(value);
   };
 
-  //Only invokes getLocation() if user stops typing after .5 seconds
+  //*Only invokes getLocation() if user stops typing after .5 seconds (debounce)
   useEffect(() => {
     const timer = setTimeout(() => {
       searchTerm && getLocation();
