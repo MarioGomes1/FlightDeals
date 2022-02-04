@@ -30,9 +30,7 @@ function MainContent() {
       {locationList && <LocationList style="changeMeLater" />}
       <Link
         to={`/test/${searchFlightObj.fromDestination}/${searchFlightObj.toDestination}/${searchFlightObj.startDate}/${searchFlightObj.endDate}`}
-      >
-        <Button>Search</Button>
-      </Link>
+      ></Link>
       {/* <Card /> */}
     </inputLocationCTX.Provider>
   );

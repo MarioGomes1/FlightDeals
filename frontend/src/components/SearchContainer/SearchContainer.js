@@ -2,6 +2,7 @@ import styles from "./SearchContainer.module.css";
 import { Fragment } from "react";
 
 import InputBuilder from "../InputBuilder/InputBuilder";
+import Button from "../UI/Button/Button";
 
 //TODO might need the context here as well to set the two way binding.
 function SearchContainer(props) {
@@ -34,6 +35,7 @@ function SearchContainer(props) {
         "startDate",
         "endDate"
       )}
+      <Button className="searchFlightBtn">Search</Button>
     </Fragment>
   );
 }

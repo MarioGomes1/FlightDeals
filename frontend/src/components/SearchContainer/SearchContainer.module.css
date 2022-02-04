@@ -1,7 +1,7 @@
 .searchContainer {
   position: relative;
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   bottom: 10%;
   height: 10em;
   margin: 0px 13em;

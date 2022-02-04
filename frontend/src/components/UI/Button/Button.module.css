@@ -4,8 +4,8 @@
   height: 3em;
   border-radius: 5%;
   color: ghostwhite;
-  position: absolute;
-  bottom: 35%;
+  /* position: absolute; */
+  /* bottom: 35%; */
   right: 0;
   border-radius: 100px;
   /* animation-duration: 1s;
@@ -27,6 +27,11 @@
   box-shadow: 0 5px 10px rgba(209, 202, 202, 0.2);
 }
 
+.searchFlightBtn,
+.btn {
+  position: absolute;
+}
+/*
 @keyframes buttonMove {
   0% {
     transform: translateY(-400px);
@@ -39,10 +44,11 @@
     transform: translateY(-400px);
   }
   100% {
-    /* transform: translateY(400px); */
+    / transform: translateY(400px); *
     transform: translateX(200px);
   }
   /* 100% {
     transform: translateY(0);
-  } */
+  } 
 }
+*/
