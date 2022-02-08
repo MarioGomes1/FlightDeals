@@ -1,8 +1,8 @@
 .searchContainer {
   position: relative;
   display: flex;
-  /* justify-content: space-evenly; */
-  bottom: 10%;
+  align-items: center;
+  bottom: 5em;
   height: 10em;
   margin: 0px 13em;
   background: linear-gradient(#314036, #33140302);
@@ -16,3 +16,8 @@
   position: absolute;
   top: 46%;
 } */
+
+.input-container {
+  width: 80%;
+  margin-left: 10px;
+}

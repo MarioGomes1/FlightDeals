@@ -5,10 +5,11 @@ import Header from "./components/Header/Header";
 import MainContent from "./components/MainContent/MainContent";
 import React from "react";
 import FlightList from "./components/FlightList/FlightList";
+import "./App.css";
 
 function App() {
   return (
-    <React.Fragment>
+    <div className="app">
       <Router>
         <Routes>
           <Route exact path="/" element={<MainContent />}></Route>
@@ -19,7 +20,7 @@ function App() {
         </Routes>
         <Header />
       </Router>
-    </React.Fragment>
+    </div>
   );
 }
 

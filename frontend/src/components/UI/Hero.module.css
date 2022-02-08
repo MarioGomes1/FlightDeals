@@ -1,10 +1,10 @@
 .banner {
   position: relative;
   width: 100%;
-  min-height: 95vh;
-  display: flex;
+  min-height: 75vh;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 .bg {
@@ -18,7 +18,7 @@
 }
 
 .title {
-  position: relative;
+  position: absolute;
   bottom: 80%;
   left: 40%;
   color: white;

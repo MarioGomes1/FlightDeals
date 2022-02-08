@@ -8,7 +8,7 @@ function Hero() {
       <section className={styles.banner}>
         <img src={mainImg} alt="" className={styles.bg} />
       </section>
-      <section className={styles.title}>Hello World!</section>
+      <section className={styles.title}>Do it now!</section>
     </Fragment>
   );
 }

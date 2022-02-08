@@ -4,10 +4,9 @@
   height: 3em;
   border-radius: 5%;
   color: ghostwhite;
-  /* position: absolute; */
-  /* bottom: 35%; */
   right: 0;
   border-radius: 100px;
+  margin-right: 10px;
   /* animation-duration: 1s;
   animation-name: buttonMove; */
 }

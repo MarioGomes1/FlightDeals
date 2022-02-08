@@ -2,12 +2,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { inputLocationCTX } from "../../Context/locationListContext";
 
-import styles from "./InputBuilder.module.css";
+import styles from "./GetDestination.module.css";
 import { instance } from "../API/api";
 
 //TODO basic input
 //API request should not be made here
-function InputBuilder(props) {
+function GetDestination(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const { setLocationList, setSearchFlightObj } = useContext(inputLocationCTX);
 
@@ -63,4 +63,4 @@ function InputBuilder(props) {
   );
 }
 
-export default InputBuilder;
+export default GetDestination;
