@@ -1,5 +1,5 @@
 //this component should not be making api requests. Will need to refactor......again!
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { inputLocationCTX } from "../../Context/locationListContext";
 
 import styles from "./GetDestination.module.css";
@@ -39,13 +39,15 @@ function GetDestination(props) {
         term: searchTerm,
       },
     };
+    //! type is being sent from SearchContainer component, and being passed to SetLocationList's context
     try {
       const { data } = await instance.get("locations/query", config);
       // const SEARCH_API_ENDPOINT = `https://tequila-api.kiwi.com/v2/search?
-      setLocationList({ data, type: props.name });
+      let location = data.locations;
+      setLocationList({ location, type: props.name });
       //TODO handle error i.e nothing comes back
     } catch (err) {
-      throw new Error(err);
+      return;
     }
   }
 

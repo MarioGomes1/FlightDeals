@@ -14,7 +14,7 @@ import Hero from "../UI/Hero";
 function MainContent() {
   const [searchFlightObj, setSearchFlightObj] = useState({});
   const [locationList, setLocationList] = useState("");
-  console.log(searchFlightObj);
+  console.log(locationList, searchFlightObj);
 
   return (
     <inputLocationCTX.Provider

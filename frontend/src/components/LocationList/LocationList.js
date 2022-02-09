@@ -3,44 +3,41 @@
 //thinking about...if the childcomponent.len && render it...yup...or not...that's the plan
 
 //TODO I think this component should be making the api call
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, Fragment } from "react";
 
 import { inputLocationCTX } from "../../Context/locationListContext";
 import styles from "./LocationList.module.css";
 
 function LocationList(style) {
-  const { locationList, setSearchFlightObj } = useContext(inputLocationCTX);
+  const { locationList, setSearchFlightObj, setLocationList } =
+    useContext(inputLocationCTX);
   let locationId = "";
   let airportName = "";
   let countryName = "";
 
-  const setLocationInputHandler = (locationID) => {
-    // console.log(locationList.type);
+  const setLocationInputHandler = (locationInfo) => {
+    const { id, ...otherInfo } = locationInfo;
     setSearchFlightObj((prev) => ({
       ...prev,
-      [locationList.type]: locationID,
+      [locationList.type]: locationInfo.id,
+      [`${locationList.type}Name`]: locationInfo.name,
+      [`${locationList.type}RestInfo`]: otherInfo,
     }));
+    setLocationList("");
   };
 
-  const locationListHelper = locationList.data.locations.map((location) => {
+  const locationListHelper = locationList.location.map((location) => {
     locationId = location.id;
     airportName = location.name;
     countryName = location.city.country["name"];
     return (
-      <li
-        key={location.id}
-        onClick={() => setLocationInputHandler(location.id)}
-      >
-        {`${airportName}(${locationId})`}
+      <li key={location.id} onClick={() => setLocationInputHandler(location)}>
+        {`${airportName} (${locationId}) `}
         {countryName}
       </li>
     );
   });
-  return (
-    <div>
-      <ul>{locationListHelper}</ul>
-    </div>
-  );
+  return <ul>{locationListHelper}</ul>;
 }
 
 export default LocationList;
